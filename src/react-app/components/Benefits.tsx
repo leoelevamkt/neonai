@@ -27,8 +27,8 @@ export default function Benefits() {
   return (
     <section className="py-20 sm:py-28 relative overflow-hidden">
       {/* Background effects */}
-      <div className="absolute top-1/4 right-8 w-72 h-72 bg-brand-pink/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-8 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/4 right-4 w-48 h-48 bg-brand-pink/8 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 left-4 w-56 h-56 bg-brand-cyan/8 rounded-full blur-3xl"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
