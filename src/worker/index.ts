@@ -17,7 +17,6 @@ const emailSchema = z.object({
   name: z.string().min(1, 'Nome é obrigatório'),
   email: z.string().email('Email inválido'),
   profession: z.string().optional(),
-  photoLink: z.string().url().optional(),
   description: z.string().optional()
 });
 
@@ -33,7 +32,6 @@ Novo pedido de ensaio profissional:
 Nome: ${data.name}
 Email: ${data.email}
 Profissão: ${data.profession || 'Não informado'}
-Link da foto: ${data.photoLink || 'Não informado'}
 Descrição: ${data.description || 'Não informado'}
     `;
 
