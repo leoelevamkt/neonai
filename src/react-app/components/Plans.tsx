@@ -85,8 +85,8 @@ export default function Plans() {
               
               <div className="relative z-10 p-6 sm:p-8 h-full flex flex-col">
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <div className="inline-flex items-center gap-1 px-4 py-1 rounded-full bg-gradient-to-r from-brand-cyan to-blue-400 text-black text-xs font-bold uppercase tracking-wider">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+                    <div className="inline-flex items-center gap-1 px-4 py-1 rounded-full bg-gradient-to-r from-brand-cyan to-blue-400 text-black text-xs font-bold uppercase tracking-wider shadow-lg">
                       <Star className="w-3 h-3" />
                       Mais popular
                     </div>
