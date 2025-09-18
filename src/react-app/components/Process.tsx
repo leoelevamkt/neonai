@@ -66,10 +66,10 @@ export default function Process() {
   };
 
   return (
-    <section id="processo" className="py-20 sm:py-32 relative overflow-hidden" ref={sectionRef}>
+    <section id="processo" className="py-20 sm:py-28 relative overflow-hidden" ref={sectionRef}>
       {/* Background effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-cyan/5 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-brand-pink/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-brand-cyan/3 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-brand-pink/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16 sm:mb-20">
