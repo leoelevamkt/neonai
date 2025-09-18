@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, MessageCircle, Mail, User, Briefcase, Link, FileText } from "lucide-react";
+import { Send, MessageCircle, Mail, User, Briefcase, Link, FileText, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,11 +9,60 @@ export default function Contact() {
     photoLink: '',
     description: ''
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const emailContent = `
+        Novo pedido de ensaio profissional:
+        
+        Nome: ${formData.name}
+        Email: ${formData.email}
+        Profissão: ${formData.profession}
+        Link da foto: ${formData.photoLink}
+        Descrição: ${formData.description}
+      `;
+
+      const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'api-key': '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'
+        },
+        body: JSON.stringify({
+          sender: {
+            name: 'Eleva Marketing',
+            email: 'leonardonicolau858@gmail.com'
+          },
+          to: [{
+            email: 'leonardosnicolau@gmail.com',
+            name: 'Leonardo Nicolau'
+          }],
+          subject: `Novo pedido de ensaio - ${formData.name}`,
+          textContent: emailContent,
+          htmlContent: emailContent.replace(/\n/g, '<br>')
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', profession: '', photoLink: '', description: '' });
+      } else {
+        throw new Error('Erro ao enviar email');
+      }
+    } catch (error) {
+      console.error('Erro:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -123,10 +172,20 @@ export default function Contact() {
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
                   <button 
                     type="submit" 
-                    className="group/btn relative overflow-hidden flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-cyan to-blue-400 text-black font-semibold text-sm sm:text-base hover:shadow-lg hover:shadow-brand-cyan/25 transition-all duration-300"
+                    disabled={isSubmitting}
+                    className="group/btn relative overflow-hidden flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-cyan to-blue-400 text-black font-semibold text-sm sm:text-base hover:shadow-lg hover:shadow-brand-cyan/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                    <span>Enviar pedido</span>
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                        <span>Enviando...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        <span>Enviar pedido</span>
+                      </>
+                    )}
                     <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
                   </button>
                   <a 
@@ -140,6 +199,20 @@ export default function Contact() {
                   </a>
                 </div>
               
+              {submitStatus === 'success' && (
+                <div className="flex items-center gap-2 mt-4 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                  <CheckCircle className="w-4 h-4" />
+                  <span className="text-sm">Pedido enviado com sucesso! Entraremos em contato em até 24h.</span>
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="flex items-center gap-2 mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400">
+                  <AlertCircle className="w-4 h-4" />
+                  <span className="text-sm">Erro ao enviar. Tente novamente ou entre em contato via WhatsApp.</span>
+                </div>
+              )}
+
               <p className="text-xs text-gray-400 mt-4 p-3 rounded-lg bg-white/5 border border-white/10">
                   🔒 Respeitamos sua privacidade. Usamos suas fotos apenas para a produção do ensaio, salvo autorização para portfólio.
                 </p>
