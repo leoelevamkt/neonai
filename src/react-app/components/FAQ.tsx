@@ -34,9 +34,9 @@ export default function FAQ() {
   return (
     <section id="faq" className="py-20 sm:py-28 relative overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-transparent"></div>
-      <div className="absolute top-1/4 left-8 w-56 h-56 bg-brand-cyan/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-8 w-64 h-64 bg-brand-pink/5 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent"></div>
+      <div className="absolute top-1/4 left-4 w-40 h-40 bg-brand-cyan/3 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-4 w-48 h-48 bg-brand-pink/3 rounded-full blur-3xl"></div>
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
