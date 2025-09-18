@@ -41,7 +41,6 @@ Novo pedido de ensaio profissional:
 Nome: ${data.name}
 Email: ${data.email}
 Profissão: ${data.profession || 'Não informado'}
-Link da foto: ${data.photoLink || 'Não informado'}
 Descrição: ${data.description || 'Não informado'}
       `;
 
