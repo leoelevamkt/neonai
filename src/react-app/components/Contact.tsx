@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { Send, MessageCircle, Mail, User, Briefcase, Link, FileText, CheckCircle, AlertCircle } from "lucide-react";
+import { Send, MessageCircle, Mail, User, Briefcase, FileText, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     profession: '',
-    photoLink: '',
     description: ''
   });
   
@@ -31,7 +30,7 @@ export default function Contact() {
 
       if (response.ok && result.success) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', profession: '', photoLink: '', description: '' });
+        setFormData({ name: '', email: '', profession: '', description: '' });
       } else {
         throw new Error(result.error || 'Erro ao enviar email');
       }
@@ -123,17 +122,7 @@ export default function Contact() {
                   />
                 </div>
                 
-                <div className="relative group">
-                  <Link className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-brand-cyan transition-colors" />
-                  <input
-                    className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-cyan focus:bg-white/10 outline-none transition-all duration-300"
-                    type="url"
-                    name="photoLink"
-                    placeholder="Link da sua foto (Drive, iCloud, etc.)"
-                    value={formData.photoLink}
-                    onChange={handleChange}
-                  />
-                </div>
+                
                 
                 <div className="relative group">
                   <FileText className="absolute left-3 top-4 w-5 h-5 text-gray-400 group-focus-within:text-brand-cyan transition-colors" />
@@ -141,7 +130,7 @@ export default function Contact() {
                     className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-cyan focus:bg-white/10 outline-none transition-all duration-300 resize-none"
                     rows={4}
                     name="description"
-                    placeholder="Estilo desejado e uso (LinkedIn, site, currículo)..."
+                    placeholder="Estilo desejado, uso (LinkedIn, site, currículo) e como enviar a foto..."
                     value={formData.description}
                     onChange={handleChange}
                   />
