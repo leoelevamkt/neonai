@@ -27,10 +27,10 @@ export default function BeforeAfterComparator() {
   };
 
   return (
-    <div className="neon-border shadow-neon w-full" data-aos="zoom-in" data-aos-delay="150">
+    <div className="neon-border shadow-neon w-full max-w-full" data-aos="zoom-in" data-aos-delay="150">
       <div 
         ref={containerRef}
-        className="ba h-64 sm:h-80 md:h-[28rem] lg:h-[32rem] relative overflow-hidden rounded-2xl cursor-ew-resize"
+        className="ba h-64 sm:h-80 md:h-96 lg:h-[28rem] relative overflow-hidden rounded-2xl cursor-ew-resize"
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
       >
@@ -45,8 +45,9 @@ export default function BeforeAfterComparator() {
         <img 
           src="https://mocha-cdn.com/01995530-d68b-71c1-bfdf-a712ecb5c545/1758138522545-3c1be482-2427-4ab6-a442-2f9d6e684f3c.png" 
           alt="Foto profissional depois" 
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          loading="eager"
+          decoding="async"
         />
         
         {/* Imagem "antes" (sobreposta) - Selfie casual */}
@@ -57,9 +58,10 @@ export default function BeforeAfterComparator() {
           <img 
             src="https://mocha-cdn.com/01995530-d68b-71c1-bfdf-a712ecb5c545/1758138021110-Face-(1).jpeg" 
             alt="Selfie casual antes" 
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover object-center"
             style={{ width: `${100 * (100 / position)}%` }}
-            loading="lazy"
+            loading="eager"
+            decoding="async"
           />
         </div>
         
