@@ -14,7 +14,7 @@ import WhatsAppFloat from "@/react-app/components/WhatsAppFloat";
 
 export default function Home() {
   return (
-    <div className="bg-black text-gray-200 font-sans bg-grid">
+    <div className="bg-black text-gray-200 font-sans bg-grid min-h-screen overflow-x-hidden">
       {/* Noise overlay */}
       <div className="noise"></div>
       
