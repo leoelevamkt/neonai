@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-coverflow';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+.font-display {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+}
+
+.bg-grid {
+  background:
+    radial-gradient(1400px 700px at 0% -10%, rgba(0,234,255,.12), transparent 50%),
+    radial-gradient(1000px 600px at 100% 110%, rgba(255,77,210,.12), transparent 50%),
+    radial-gradient(800px 400px at 50% 50%, rgba(37,99,235,.04), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0 1px, transparent 1px 60px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 60px),
+    linear-gradient(180deg, #020308, #030509, #040611);
+}
+
+.noise {
+  pointer-events: none; 
+  position: fixed; 
+  inset: 0; 
+  z-index: 5;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" opacity="0.035" width="160" height="160" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>');
+  mix-blend-mode: soft-light;
+}
+
+.glass { 
+  background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.04)); 
+  border: 1px solid rgba(255,255,255,.15); 
+  backdrop-filter: blur(16px); 
+  box-shadow: 0 8px 32px rgba(0,0,0,.2);
+}
+
+.neon-border { 
+  position: relative; 
+  border-radius: 16px; 
+  overflow: hidden; 
+}
+
+.neon-border::before { 
+  content: ''; 
+  position: absolute; 
+  inset: -2px; 
+  z-index: 0;
+  background: conic-gradient(from 0deg, #00EAFF, #2563EB, #FF4DD2, #00EAFF); 
+  filter: blur(12px); 
+  animation: spin 16s linear infinite; 
+}
+
+.neon-border::after { 
+  content: ''; 
+  position: absolute; 
+  inset: 0; 
+  border-radius: inherit; 
+  background: rgba(8,10,18,.88); 
+  z-index: 1; 
+}
+
+.neon-border > * { 
+  position: relative; 
+  z-index: 2; 
+}
+
+@keyframes spin { 
+  to { transform: rotate(360deg); } 
+}
+
+.btn-neon { 
+  background: linear-gradient(90deg, #00EAFF, #2563EB); 
+  color: #000; 
+  transition: transform .2s, box-shadow .3s; 
+  box-shadow: 0 0 0 rgba(0,234,255,0); 
+}
+
+.btn-neon:hover { 
+  transform: translateY(-1px) scale(1.02); 
+  box-shadow: 0 10px 30px rgba(0,234,255,.25); 
+}
+
+.btn-ghost { 
+  border: 1px solid rgba(255,255,255,.2); 
+  transition: border-color .2s;
+}
+
+.shadow-neon { 
+  box-shadow: 
+    0 20px 60px rgba(0,234,255,.15), 
+    0 8px 16px rgba(0,234,255,.1),
+    inset 0 0 0 1px rgba(255,255,255,.08); 
+}
+
+.ba { 
+  position: relative; 
+  border-radius: 16px; 
+  overflow: hidden; 
+}
+
+.ba img { 
+  position: absolute; 
+  inset: 0; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+.ba-top { 
+  position: absolute; 
+  inset: 0; 
+  overflow: hidden; 
+  width: 50%; 
+}
+
+.ba-divider { 
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  width: 2px; 
+  background: linear-gradient(180deg, #00EAFF, #FF4DD2); 
+  left: 50%; 
+}
+
+.ba-knob { 
+  position: absolute; 
+  left: calc(50% - 14px); 
+  top: 50%; 
+  transform: translateY(-50%); 
+  width: 28px; 
+  height: 28px; 
+  border-radius: 50%;
+  background: #000; 
+  border: 2px solid #00EAFF; 
+  box-shadow: 0 0 18px rgba(0,234,255,.5); 
+  cursor: ew-resize; 
+}
+
+.ba input[type="range"] { 
+  position: absolute; 
+  inset: 0; 
+  width: 100%; 
+  height: 100%; 
+  opacity: 0; 
+  cursor: ew-resize; 
+}
+
+.ba-label { 
+  position: absolute; 
+  top: 12px; 
+  padding: 6px 10px; 
+  font-size: 12px; 
+  border-radius: 999px; 
+  backdrop-filter: blur(6px); 
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,234,255,0.3); }
+  50% { box-shadow: 0 0 30px rgba(0,234,255,0.6), 0 0 40px rgba(0,234,255,0.4); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Enhanced glass effect */
+.glass-enhanced {
+  background: linear-gradient(145deg, rgba(255,255,255,.15), rgba(255,255,255,.05));
+  border: 1px solid rgba(255,255,255,.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.1),
+    inset 0 -1px 0 rgba(255,255,255,.05);
+}
+
+/* Gradient text animation */
+.gradient-text-animated {
+  background: linear-gradient(90deg, #00EAFF, #2563EB, #FF4DD2, #00EAFF);
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Enhanced button effects */
+.btn-neon-enhanced {
+  position: relative;
+  background: linear-gradient(90deg, #00EAFF, #2563EB);
+  color: #000;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-neon-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-neon-enhanced:hover::before {
+  left: 100%;
+}
+
+.btn-neon-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,234,255,0.4);
+}
+
+/* Swiper customizations */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #00EAFF !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  transform: scale(1.1) !important;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #00EAFF !important;
+  transform: scale(1.2) !important;
+}
+
+/* Scroll animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
