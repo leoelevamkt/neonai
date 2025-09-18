@@ -1,29 +1,30 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import LazyImage from './LazyImage';
 
 const caseImages = [
   {
-    src: "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=1000&q=80",
+    src: "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=600&q=75",
     alt: "Chefe de cozinha"
   },
   {
-    src: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1000&q=80",
+    src: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=75",
     alt: "Produtora de conteúdo"
   },
   {
-    src: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=1000&q=80",
+    src: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=600&q=75",
     alt: "Arquiteta"
   },
   {
-    src: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1000&q=80",
+    src: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=75",
     alt: "Desenvolvedor"
   },
   {
-    src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=80",
+    src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=75",
     alt: "Executivo"
   },
   {
-    src: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80",
+    src: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=75",
     alt: "Médica"
   }
 ];
@@ -53,8 +54,9 @@ export default function Cases() {
           slidesPerView={1.2}
           spaceBetween={24}
           autoplay={{
-            delay: 2500,
+            delay: 4000,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
           pagination={{
             el: '.cases-pagination',
@@ -79,11 +81,11 @@ export default function Cases() {
         >
           {caseImages.map((image, index) => (
             <SwiperSlide key={index} className="w-64 md:w-80 lg:w-96">
-              <img 
-                className="rounded-xl shadow-neon w-full h-auto" 
+              <LazyImage 
+                className="rounded-xl shadow-neon w-full h-auto aspect-[3/4]" 
                 src={image.src} 
                 alt={image.alt} 
-                loading="lazy"
+                loading={index < 3 ? "eager" : "lazy"}
               />
             </SwiperSlide>
           ))}
