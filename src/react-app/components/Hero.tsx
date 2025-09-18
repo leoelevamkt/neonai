@@ -2,9 +2,9 @@ import BeforeAfterComparator from "./BeforeAfterComparator";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[95vh] flex items-center pt-20 sm:pt-24 md:pt-28">
-      <div className="absolute -top-20 -left-24 w-[20rem] sm:w-[30rem] h-[20rem] sm:h-[30rem] rounded-full blur-3xl bg-brand-cyan/20"></div>
-      <div className="absolute -bottom-24 -right-24 w-[24rem] sm:w-[34rem] h-[24rem] sm:h-[34rem] rounded-full blur-3xl bg-brand-pink/20"></div>
+    <section className="relative min-h-[95vh] flex items-center pt-20 sm:pt-24 md:pt-28 overflow-hidden">
+      <div className="absolute -top-10 -left-12 w-64 sm:w-80 h-64 sm:h-80 rounded-full blur-3xl bg-brand-cyan/15"></div>
+      <div className="absolute -bottom-12 -right-12 w-72 sm:w-96 h-72 sm:h-96 rounded-full blur-3xl bg-brand-pink/15"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
         <div className="order-2 lg:order-1">
