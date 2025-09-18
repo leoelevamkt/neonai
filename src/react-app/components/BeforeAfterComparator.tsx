@@ -41,23 +41,23 @@ export default function BeforeAfterComparator() {
           Depois
         </span>
         
-        {/* Imagem "antes" (fundo) - Selfie casual */}
+        {/* Imagem "antes" (fundo) - Foto profissional */}
         <img 
-          src="https://mocha-cdn.com/01995530-d68b-71c1-bfdf-a712ecb5c545/1758138021110-Face-(1).jpeg" 
-          alt="Selfie casual antes" 
+          src="https://mocha-cdn.com/01995530-d68b-71c1-bfdf-a712ecb5c545/1758138522545-3c1be482-2427-4ab6-a442-2f9d6e684f3c.png" 
+          alt="Foto profissional antes" 
           className="absolute inset-0 w-full h-full object-cover object-center"
           loading="eager"
           decoding="async"
         />
         
-        {/* Imagem "depois" (sobreposta) - Foto profissional */}
+        {/* Imagem "depois" (sobreposta) - Selfie casual */}
         <div 
           className="absolute inset-0 overflow-hidden"
           style={{ width: `${position}%` }}
         >
           <img 
-            src="https://mocha-cdn.com/01995530-d68b-71c1-bfdf-a712ecb5c545/1758138522545-3c1be482-2427-4ab6-a442-2f9d6e684f3c.png" 
-            alt="Foto profissional depois" 
+            src="https://mocha-cdn.com/01995530-d68b-71c1-bfdf-a712ecb5c545/1758138021110-Face-(1).jpeg" 
+            alt="Selfie casual depois" 
             className="absolute inset-0 w-full h-full object-cover object-center"
             style={{ width: `${100 * (100 / position)}%` }}
             loading="eager"
