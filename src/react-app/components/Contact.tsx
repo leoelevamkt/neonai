@@ -19,43 +19,21 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      const emailContent = `
-        Novo pedido de ensaio profissional:
-        
-        Nome: ${formData.name}
-        Email: ${formData.email}
-        Profissão: ${formData.profession}
-        Link da foto: ${formData.photoLink}
-        Descrição: ${formData.description}
-      `;
-
-      const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'api-key': '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'
         },
-        body: JSON.stringify({
-          sender: {
-            name: 'Eleva Marketing',
-            email: 'leonardonicolau858@gmail.com'
-          },
-          to: [{
-            email: 'leonardosnicolau@gmail.com',
-            name: 'Leonardo Nicolau'
-          }],
-          subject: `Novo pedido de ensaio - ${formData.name}`,
-          textContent: emailContent,
-          htmlContent: emailContent.replace(/\n/g, '<br>')
-        })
+        body: JSON.stringify(formData)
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', profession: '', photoLink: '', description: '' });
       } else {
-        throw new Error('Erro ao enviar email');
+        throw new Error(result.error || 'Erro ao enviar email');
       }
     } catch (error) {
       console.error('Erro:', error);
