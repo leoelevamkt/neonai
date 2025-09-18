@@ -26,8 +26,8 @@ export default function Contact() {
   return (
     <section id="contato" className="py-20 sm:py-28 relative overflow-hidden">
       {/* Background effects */}
-      <div className="absolute top-1/4 left-10 w-80 h-80 bg-brand-cyan/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-brand-pink/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-1/4 left-4 w-48 h-48 bg-brand-cyan/6 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-4 w-56 h-56 bg-brand-pink/6 rounded-full blur-3xl"></div>
       
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
@@ -149,21 +149,23 @@ export default function Contact() {
           
           <div className="group relative rounded-2xl overflow-hidden" data-aos="fade-left">
             {/* Animated border */}
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-pink via-purple-400 to-brand-cyan opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-pink via-purple-400 to-brand-cyan opacity-50 blur-sm group-hover:opacity-75 transition-opacity duration-300"></div>
             <div className="absolute inset-[2px] rounded-2xl overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1516575150278-77136aed6920?auto=format&fit=crop&w=1600&q=80" 
+                src="https://images.unsplash.com/photo-1516575150278-77136aed6920?auto=format&fit=crop&w=800&q=70" 
                 alt="Estúdio virtual" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               
               {/* Floating elements */}
-              <div className="absolute bottom-6 left-6 glass px-4 py-2 rounded-full">
-                <span className="text-sm font-medium">✨ IA Avançada</span>
+              <div className="absolute bottom-4 left-4 glass px-3 py-1 rounded-full">
+                <span className="text-xs font-medium">✨ IA Avançada</span>
               </div>
-              <div className="absolute top-6 right-6 glass px-4 py-2 rounded-full">
-                <span className="text-sm font-medium">⚡ 24h</span>
+              <div className="absolute top-4 right-4 glass px-3 py-1 rounded-full">
+                <span className="text-xs font-medium">⚡ 24h</span>
               </div>
             </div>
           </div>
