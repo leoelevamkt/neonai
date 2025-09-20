@@ -81,81 +81,44 @@ export default function Process() {
         
         {/* Mobile Layout */}
         <div className="block lg:hidden">
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {processSteps.map((step, index) => (
               <div
                 key={step.id}
-                ref={el => { stepRefs.current[index] = el; }}
                 className="text-center"
+                data-aos="fade-up"
+                data-aos-delay={index * 150}
               >
                 {/* Step number */}
                 <div className="flex justify-center mb-6">
-                  <div
-                    className={`transform transition-all duration-1000 scale-100 opacity-100`}
-                    style={{ transitionDelay: `${index * 300}ms` }}
-                  >
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full font-display font-bold text-xl transition-all duration-500 shadow-lg ${
-                      getStepStatus(index) === 'active'
-                        ? 'bg-gradient-to-r from-brand-cyan to-blue-500 text-white scale-110 animate-pulse shadow-cyan-500/50'
-                        : getStepStatus(index) === 'completed'
-                        ? 'bg-gradient-to-r from-emerald-400 to-teal-500 text-white shadow-emerald-500/50'
-                        : 'bg-gradient-to-r from-gray-600 to-gray-700 text-white border border-gray-500'
-                    }`}>
-                      {step.id}
-                    </div>
+                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full font-display font-bold text-lg sm:text-xl bg-gradient-to-r from-brand-cyan to-blue-500 text-white shadow-lg shadow-cyan-500/50">
+                    {step.id}
                   </div>
                 </div>
 
                 {/* Step content */}
-                <div
-                  className={`transform transition-all duration-1000 ${
-                    getStepStatus(index) === 'pending' 
-                      ? 'translate-y-8 opacity-0' 
-                      : 'translate-y-0 opacity-100'
-                  }`}
-                  style={{ transitionDelay: `${index * 200}ms` }}
-                >
-                  <div className="glass rounded-2xl p-6 sm:p-8 shadow-neon hover:scale-105 transition-all duration-300 group">
-                    <div className="flex items-center justify-center gap-4 mb-4">
-                      <div className={`p-4 rounded-xl transition-all duration-500 ${
-                        getStepStatus(index) === 'active' 
-                          ? 'bg-gradient-to-r from-brand-cyan to-blue-500 text-white scale-110 animate-pulse' 
-                          : getStepStatus(index) === 'completed'
-                          ? 'bg-gradient-to-r from-emerald-400 to-teal-500 text-white'
-                          : 'bg-gray-700 text-gray-400'
-                      }`}>
-                        {getStepStatus(index) === 'completed' ? <CheckCircle className="w-8 h-8" /> : step.icon}
-                      </div>
-                      <div className="flex-1 text-left">
-                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors duration-300">
-                          {step.title}
-                        </h3>
-                        <p className="text-gray-300 text-base sm:text-lg mb-3">
-                          {step.description}
-                        </p>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                          {step.details}
-                        </p>
-                      </div>
+                <div className="glass rounded-2xl p-6 sm:p-8 shadow-neon transition-all duration-300 group">
+                  <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
+                    <div className="p-3 sm:p-4 rounded-xl bg-gradient-to-r from-brand-cyan to-blue-500 text-white">
+                      {step.icon}
                     </div>
-                    
-                    {/* Progress indicator */}
-                    <div className="mt-4">
-                      <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
-                        <div
-                          className={`h-full transition-all duration-1000 rounded-full ${
-                            getStepStatus(index) === 'active' 
-                              ? 'bg-gradient-to-r from-brand-cyan to-blue-500 animate-pulse' 
-                              : getStepStatus(index) === 'completed'
-                              ? 'bg-gradient-to-r from-emerald-400 to-teal-500'
-                              : 'bg-gray-600'
-                          }`}
-                          style={{
-                            width: getStepStatus(index) === 'pending' ? '0%' : '100%',
-                            transitionDelay: `${index * 300}ms`
-                          }}
-                        ></div>
-                      </div>
+                    <div className="flex-1 text-center sm:text-left">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors duration-300">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-300 text-base sm:text-lg mb-3">
+                        {step.description}
+                      </p>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        {step.details}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Progress indicator */}
+                  <div className="mt-4">
+                    <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
+                      <div className="h-full w-full bg-gradient-to-r from-brand-cyan to-blue-500 rounded-full"></div>
                     </div>
                   </div>
                 </div>
