@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import { Autoplay, EffectCoverflow } from 'swiper/modules';
 import LazyImage from './LazyImage';
 
 const caseImages = [
@@ -39,7 +39,7 @@ export default function Cases() {
         </div>
 
         <Swiper
-          modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
+          modules={[Autoplay, EffectCoverflow]}
           effect="coverflow"
           coverflowEffect={{
             rotate: 10,
@@ -58,14 +58,9 @@ export default function Cases() {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          pagination={{
-            el: '.cases-pagination',
-            clickable: true,
-          }}
-          navigation={{
-            nextEl: '.cases-next',
-            prevEl: '.cases-prev',
-          }}
+          pagination={false}
+          navigation={false}
+          scrollbar={false}
           breakpoints={{
             640: {
               slidesPerView: 1.6,
@@ -91,9 +86,8 @@ export default function Cases() {
           ))}
         </Swiper>
         
-        <div className="cases-prev swiper-button-prev !text-cyan-300"></div>
-        <div className="cases-next swiper-button-next !text-cyan-300"></div>
-        <div className="cases-pagination swiper-pagination"></div>
+        
+        
       </div>
     </section>
   );
