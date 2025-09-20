@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
 @import 'swiper/css';
-@import 'swiper/css/navigation';
-@import 'swiper/css/pagination';
 @import 'swiper/css/effect-coverflow';
 @tailwind base;
 @tailwind components;
@@ -258,26 +256,8 @@ body {
 }
 
 /* Swiper customizations */
-.swiper-button-prev,
-.swiper-button-next {
-  color: #00EAFF !important;
-  transition: all 0.3s ease !important;
-}
 
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  transform: scale(1.1) !important;
-}
 
-.swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.3) !important;
-  transition: all 0.3s ease !important;
-}
-
-.swiper-pagination-bullet-active {
-  background: #00EAFF !important;
-  transform: scale(1.2) !important;
-}
 
 /* Scroll animations */
 @keyframes fadeInUp {
