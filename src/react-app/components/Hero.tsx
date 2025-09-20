@@ -7,9 +7,8 @@ export default function Hero() {
       <div className="absolute -bottom-12 -right-12 w-72 sm:w-96 h-72 sm:h-96 rounded-full blur-3xl bg-brand-pink/15"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
-        <div className="order-2 lg:order-1">
+        <div className="order-1 lg:order-1">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs sm:text-sm mb-4" data-aos="fade-up">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="hidden sm:inline">Fotos profissionais com IA — rápido, acessível e premium</span>
             <span className="sm:hidden">Fotos profissionais com IA</span>
           </div>
@@ -44,7 +43,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="order-1 lg:order-2">
+        <div className="order-2 lg:order-2">
           <BeforeAfterComparator />
         </div>
       </div>
