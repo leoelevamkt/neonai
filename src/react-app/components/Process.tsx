@@ -194,8 +194,8 @@ export default function Process() {
                   ></div>
                 </div>
                 
-                {/* Step number */}
-                <div className={`w-full lg:w-5/12 flex ${
+                {/* Step number - desktop only */}
+                <div className={`w-full lg:w-5/12 hidden lg:flex ${
                   index % 2 === 0 ? 'justify-start lg:pl-12' : 'justify-end lg:pr-12'
                 } relative z-20`}>
                   <div
