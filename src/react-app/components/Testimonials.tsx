@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 
 const testimonials = [
   {
@@ -26,17 +26,15 @@ export default function Testimonials() {
         </div>
         
         <Swiper
-          modules={[Pagination, Autoplay]}
+          modules={[Autoplay]}
           loop={true}
           autoHeight={true}
           autoplay={{
             delay: 3500,
             disableOnInteraction: false,
           }}
-          pagination={{
-            el: '.swiper-pagination',
-            clickable: true,
-          }}
+          pagination={false}
+          navigation={false}
           className="depo-swiper"
         >
           {testimonials.map((testimonial, index) => (
@@ -49,7 +47,7 @@ export default function Testimonials() {
           ))}
         </Swiper>
         
-        <div className="swiper-pagination"></div>
+        
       </div>
     </section>
   );
