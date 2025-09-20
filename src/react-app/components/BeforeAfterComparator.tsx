@@ -73,10 +73,10 @@ export default function BeforeAfterComparator() {
         
         {/* Knob */}
         <div 
-          className="absolute top-1/2 transform -translate-y-1/2 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-black border-2 border-brand-cyan shadow-lg cursor-ew-resize z-10"
+          className="absolute top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white border border-gray-300 cursor-ew-resize z-10"
           style={{ 
-            left: `calc(${position}% - 12px)`,
-            boxShadow: '0 0 18px rgba(0,234,255,0.5)'
+            left: `calc(${position}% - 8px)`,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
           }}
         />
         
