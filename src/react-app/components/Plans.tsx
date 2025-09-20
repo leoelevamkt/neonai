@@ -55,7 +55,7 @@ export default function Plans() {
       <div className="absolute bottom-1/4 right-4 w-56 h-56 bg-brand-pink/6 rounded-full blur-3xl"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+        <div className="text-center mb-8 sm:mb-12" data-aos="fade-up">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm mb-6">
             <Star className="w-4 h-4 text-brand-cyan" />
             <span>Escolha seu plano ideal</span>
@@ -68,30 +68,32 @@ export default function Plans() {
           </p>
         </div>
         
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-16">
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`group relative rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:-translate-y-2 ${
+              className={`group relative rounded-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 ${
                 plan.popular ? 'md:scale-[1.05] shadow-2xl shadow-brand-cyan/20' : ''
               }`}
               data-aos="fade-right" 
               data-aos-delay={index * 250}
               data-aos-duration="900"
             >
+              {/* Popular badge - positioned outside the card */}
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-30">
+                  <div className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-gradient-to-r from-brand-cyan to-blue-400 text-black text-xs font-bold uppercase tracking-wider shadow-xl whitespace-nowrap">
+                    <Star className="w-3 h-3" />
+                    Mais popular
+                  </div>
+                </div>
+              )}
+              
               {/* Animated border */}
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan via-blue-400 to-brand-pink opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan via-blue-400 to-brand-pink opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
               <div className="absolute inset-[2px] bg-gray-900/95 rounded-2xl backdrop-blur-sm"></div>
               
-              <div className="relative z-10 p-6 sm:p-8 h-full flex flex-col">
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                    <div className="inline-flex items-center gap-1 px-4 py-1 rounded-full bg-gradient-to-r from-brand-cyan to-blue-400 text-black text-xs font-bold uppercase tracking-wider shadow-lg">
-                      <Star className="w-3 h-3" />
-                      Mais popular
-                    </div>
-                  </div>
-                )}
+              <div className="relative z-10 p-6 sm:p-8 h-full flex flex-col overflow-visible">
                 
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`p-3 rounded-xl bg-gradient-to-r ${plan.gradient} text-white group-hover:scale-110 transition-transform duration-300`}>
